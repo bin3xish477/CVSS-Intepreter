@@ -96,7 +96,7 @@ class CVSS3:
 
 def main():
   if len(argv) == 1 or len(argv) > 2:
-    print("\033[31mUsage: cvss.py [CVSS Score]\033[0m")
+    print("\033[31mUsage: cvss.py [CVSS Score] e.g. CVSS2#AV:N/AC:L/Au:N/C:C/I:C/A:C\033[0m")
     exit(1)
 
   cvssScore = argv[1]
