@@ -9,6 +9,7 @@ Sources used for scoring descriptions:
   - https://www.first.org/cvss/specification-document
 
   Example CVSS v2 : CVSS2#AV:N/AC:L/Au:N/C:C/I:C/A:C
+  Example CVSS v3 : CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N
 """
 
 try:
@@ -17,12 +18,12 @@ try:
 except ImportError as err:
   print(f"Import Error: {err}")
 
-# ------------------------------------------------------------- #
-#                        Base Metrics                           #
+
 access_vector = {
   'L': 'Local (L): The attacker must have physical or logical access to the affected system.',
   'A': 'Adjacent Network (A): The attacker must have access to the local network that the affected system is connected to.',
-  'N': 'Network (N): The attacker can remotely exploit the vulnerability.'
+  'N': 'Network (N): The attacker can remotely exploit the vulnerability.',
+  'P': 'The attack requires the attacker to physically touch or manipulate the vulnerable component.'
 }
 
 access_complexitiy = {
@@ -31,8 +32,6 @@ access_complexitiy = {
   'H': 'High (H): Exploiting the vulnerability requires "specialized" conditions that would be difficult to find.'
 }
 
-# ------------------------------------------------------------- #
-#         Base metrics specific to version 3 CVSS scores        #
 privileges_required = {
   'N': 'None (N): The attacker is unauthorized prior to attack, and therefore does not require any access to settings or files of the vulnerable system to carry out an attack.',
   'L': 'Low (L): The attacker requires privileges that provide basic user capabilites that could normally affect only settings and files ownwed by a user. Alternatively, an attacker with Low privileges has the ability to access only non-sensitive resources.',
@@ -56,26 +55,35 @@ authentication = {
   'M': 'Multiple (M): Attackers would need to authenticate two or more times exploit the vulnerability.'
 }
 
-# ------------------------------------------------------------- #
-#                       Impact Metrics                          #
-confidentiality = {
+confidentialityv2 = {
   'N': 'None (N): There is no confidentiality impact.',
   'P': 'Partial (P): Access to some information is possible, but the attacker does not have control over what information is compromised.',
   'C': 'Complete (C): All information on the system is compromised.'
 }
 
-integrity = {
+integrityv2 = {
   'N': 'None (N): There is no integrity impact.',
   'P': 'Partial (P): Modification of some information is possible, but the attacker does not have control over what information is modified.',
   'C': 'Complete (C): The integrity of the system is totally compromised, and the attacker may change any information at will.'
 }
 
-availability = {
+availabilityv2 = {
   'N': 'None (N): There is no availablity impact.',
   'P': 'Partial (P): The performance of the system is degraded.',
   'C': 'Complete (C): The system is completely shut down.'
 }
 
+#   Impact Metric for V3
+confidentialityv3 = {
+
+}
+
+integrityv3 = {
+
+}
+
+availabilityv3 = {
+}
 class Cvss2:
   """CVSS version 2 class definition."""
   def __init__(self, score):
@@ -143,7 +151,7 @@ class Cvss3:
       Return:
         score_dict (dict): dictionary containing metric identifiers as keys and metric values as values.
     """
-    score_metrics = self.score[6:].split('/')
+    score_metrics = self.score[self.score.find('/') + 1:].split('/')
     score_dict = {score[:score.rfind(':')] : score[score.rfind(':') + 1:]  for score in score_metrics}
     return score_dict
 
@@ -196,7 +204,6 @@ def main():
     exit(1)
 
   cvss_score = argv[1]
-
   if '2' in cvss_score[:6]:
     instance = Cvss2(cvss_score)
   else:
