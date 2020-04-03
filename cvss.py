@@ -203,7 +203,7 @@ def main():
     print("\033[31mUsage: cvss.py [CVSS Score]\033[0m")
     exit(1)
 
-  cvss_score = argv[1]
+  cvss_score = argv[1].strip()
   if '2' in cvss_score[:6]:
     instance = Cvss2(cvss_score)
   else:
