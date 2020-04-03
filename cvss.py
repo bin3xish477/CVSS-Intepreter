@@ -84,7 +84,9 @@ integrityv3 = {
 }
 
 availabilityv3 = {
+
 }
+
 class Cvss2:
   """CVSS version 2 class definition."""
   def __init__(self, score):
