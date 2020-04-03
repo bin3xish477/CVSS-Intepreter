@@ -158,7 +158,7 @@ class Cvss3:
     metric_definitions = {}
     for identifier, value in score_dict.items():
       metric_definitions[identifier] = self.check_definition(identifier.lower(), value)
-    return 
+    return metric_definitions
 
   def check_definition(self, identifier, value):
     """
