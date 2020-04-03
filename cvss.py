@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 __author__ = 'Alexis Rodriguez'
+__version__ = '1.0'
 __email__ = 'rodriguez10011999@gmail.com'
 
 """
