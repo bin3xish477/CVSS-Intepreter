@@ -1,3 +1,3 @@
 # CVSS-Analyzer
 Interpret CVSS (version 2 & version 3) scores.
-![Screenshort](cvss-analyzer-screenshot.png)
+![Screenshort](screenshot.png)
