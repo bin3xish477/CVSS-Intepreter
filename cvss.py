@@ -223,15 +223,14 @@ def main():
   score_dict = instance.parse_score()
   results = instance.determine_metrics(score_dict)
 
-  print('\n' + '-'*150)
+  print('\n')
   for key, val in results.items():
     print('\033[31m\033[1m' + key + '\033[0m -> ', end=' ')
     val_list = val.split()
     print('\x1b[1;33m' + val_list[0] + '\033[0m', end=' ')
     print('\033[33m' + val_list[1] + '\033[0m', end=' ')
     print(' '.join(val_list[2:]))
-  print('-'*150, '\n')
-
+  print('\n')
 if __name__ == '__main__':
   try:
     main()
