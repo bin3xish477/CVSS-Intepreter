@@ -81,8 +81,8 @@ availabilityv2 = {
 
 #   Impact Metrics for V3
 confidentialityv3 = {
-  'H': 'High (H): There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker',
-  'L': 'Low (L): There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained',
+  'H': 'High (H): There is total loss of confidentiality, resulting in all resources within the impacted component being divulged to the attacker.',
+  'L': 'Low (L): There is some loss of confidentiality. Access to some restricted information is obtained, but the attacker does not have control over what information is obtained, or the amount or kind of loss is constrained.',
   'N': 'None (N): There is no loss of confidentiality within the impacted component.'
 }
 
@@ -93,7 +93,7 @@ integrityv3 = {
 }
 
 availabilityv3 = {
-  'H': 'High (H): There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed)',
+  'H': 'High (H): There is total loss of availability, resulting in the attacker being able to fully deny access to resources in the impacted component; this loss is either sustained (while the attacker continues to deliver the attack) or persistent (the condition persists even after the attack has completed).',
   'L': 'Low (L): There is reduced performance or interruptions in resource availability',
   'N': 'None (N): There is no impact to availability within the impacted component.'
 }
