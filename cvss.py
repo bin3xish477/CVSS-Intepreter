@@ -105,7 +105,6 @@ class Cvss2:
 
   def parse_score(self):
     """Parses the CVSS v2 scores into a dictionary.
-
       Argument:
         None
 
@@ -131,7 +130,6 @@ class Cvss2:
 
   def check_definition(self, identifier, value):
     """Check the definition for each metric identifieer and its corresponding metric definition.
-
       Argument:
         identifier (str): the metric to check for e.g. Au
         value (str): the value assigned to the identifier.
@@ -164,7 +162,6 @@ class Cvss3:
 
   def parse_score(self):
     """Parses the CVSS v3 scores into a dictionary.
-
       Argument:
         None
 
@@ -177,7 +174,6 @@ class Cvss3:
 
   def determine_metrics(self, score_dict):
     """Determine the values corresponding to each metric.
-
       Argument:
         score_dict (dict): dictionary containing the metrics of the score in key, value pairs.
 
@@ -191,7 +187,6 @@ class Cvss3:
 
   def check_definition(self, identifier, value):
     """Check the definition for each metric identifieer and its corresponding metric definition.
-
       Argument:
         identifier (str): the metric to check for e.g. Au
         value (str): the value assigned to the identifier.
