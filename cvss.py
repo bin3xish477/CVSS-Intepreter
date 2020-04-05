@@ -19,7 +19,7 @@ try:
 except ImportError as err:
   print(f"Import Error: {err}")
 
-
+# Metric definitions-----------------------------------------------------------------------------------------------------------------------
 access_vector = {
   'L': 'Local (L): The attacker must have physical or logical access to the affected system.',
   'A': 'Adjacent Network (A): The attacker must have access to the local network that the affected system is connected to.',
@@ -97,7 +97,7 @@ availabilityv3 = {
   'L': 'Low (L): There is reduced performance or interruptions in resource availability',
   'N': 'None (N): There is no impact to availability within the impacted component.'
 }
-
+#  Cvss2 class definition-----------------------------------------------------------------------------------------------------------------------
 class Cvss2:
   """CVSS version 2 class definition."""
   def __init__(self, score):
@@ -117,8 +117,7 @@ class Cvss2:
     return score_dict
 
   def determine_metrics(self, score_dict):
-    """
-
+    """Determine the values corresponding to each metric.
       Argument:
         score_dict (dict): dictionary containing the metrics of the score in key, value pairs.
 
@@ -131,7 +130,14 @@ class Cvss2:
     return metric_definitions
 
   def check_definition(self, identifier, value):
-    """
+    """Check the definition for each metric identifieer and its corresponding metric definition.
+
+      Argument:
+        identifier (str): the metric to check for e.g. Au
+        value (str): the value assigned to the identifier.
+      
+      Return:
+        the definition assigned to value in the dictionary concerned with the identifier.
     """
     if identifier == 'av':
       return access_vector[value]
@@ -150,7 +156,7 @@ class Cvss2:
 
     else:
       return availabilityv2[value]
-
+# Cvss3 class definition-----------------------------------------------------------------------------------------------------------------------
 class Cvss3:
   """CVSS version 3 class definition."""
   def __init__(self, score):
@@ -170,7 +176,8 @@ class Cvss3:
     return score_dict
 
   def determine_metrics(self, score_dict):
-    """
+    """Determine the values corresponding to each metric.
+
       Argument:
         score_dict (dict): dictionary containing the metrics of the score in key, value pairs.
 
@@ -183,7 +190,14 @@ class Cvss3:
     return metric_definitions
 
   def check_definition(self, identifier, value):
-    """
+    """Check the definition for each metric identifieer and its corresponding metric definition.
+
+      Argument:
+        identifier (str): the metric to check for e.g. Au
+        value (str): the value assigned to the identifier.
+
+      Return:
+        the definition assigned to value in the dictionary concerned with the identifier.
     """
     if identifier == 'av':
       return access_vector[value]
@@ -231,6 +245,7 @@ def main():
     print('\033[33m' + val_list[1] + '\033[0m', end=' ')
     print(' '.join(val_list[2:]))
   print('\n')
+
 if __name__ == '__main__':
   try:
     main()
